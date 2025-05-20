@@ -36,7 +36,7 @@
     }
 
     // Ping to check connectivity
-    ping.src = 'https://example.com/fav.png?t=' + Date.now();
+    ping.src = 'https://www.google.com/favicon.ico?t=' + Date.now();
 
     ping.addEventListener('load', () => setVideo(mainVideo));
     ping.addEventListener('error', () => setVideo(fallbackVideo));

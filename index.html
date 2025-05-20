@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>My Micro Video Site</title>
+  <style>
+    body {
+      margin: 0;
+      background: #000000cf;
+    }
+    video {
+      width: 100%;
+      height: 100vh;
+      object-fit: cover;
+    }
+    .offline {
+      display: none;
+    }
+  </style>
+</head>
+<body style="overflow:hidden">
+
+  <video id="videoPlayer" muted autoplay loop></video>
+  <img src="" class="offline" id="ping" />
+
+  <script>
+    const fallbackVideo = 'offline.mp4';
+    const mainVideo = 'promo.mp4';
+
+    const videoEl = document.getElementById('videoPlayer');
+    const ping = document.getElementById('ping');
+
+    function setVideo(src) {
+      videoEl.src = src;
+      videoEl.load();
+      videoEl.play();
+    }
+
+    // Ping to check connectivity
+    ping.src = 'https://example.com/fav.png?t=' + Date.now();
+
+    ping.addEventListener('load', () => setVideo(mainVideo));
+    ping.addEventListener('error', () => setVideo(fallbackVideo));
+  </script>
+
+</body>
+</html>
